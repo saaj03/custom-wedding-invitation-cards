@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Marhey:wght@400;600;700&family=Scheherazade+New:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-[#F3F8F2] text-[#1F352A] overflow-x-hidden;
+    font-family: 'Cormorant Garamond', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+@layer components {
+  .font-script {
+    font-family: 'Marhey', 'Georgia', serif;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .font-arabic {
+    font-family: 'Scheherazade New', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .font-serif-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .font-body {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .gold-text {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(135deg, #6C8F6D 0%, #9CB79F 30%, #7A9C78 60%, #496652 100%);
+  }
+
+  .gold-border {
+    border-image: linear-gradient(135deg, #7A9C78, #B9D0B8, #496652) 1;
+  }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/50 shadow-xl;
+  }
+
+  .invitation-card {
+    background: linear-gradient(160deg, #F6FBF5 0%, #EEF7EE 40%, #E7F1E7 100%);
+    @apply shadow-2xl;
+    box-shadow:
+      0 25px 50px rgba(92, 123, 100, 0.12),
+      0 10px 20px rgba(92, 123, 100, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .gold-divider {
+    @apply flex items-center gap-4 my-6;
+  }
+
+  .gold-divider::before,
+  .gold-divider::after {
+    content: '';
+    @apply flex-1 h-px;
+    background: linear-gradient(90deg, transparent, #7A9C78, transparent);
+  }
+
+  .section-padding {
+    @apply px-4 py-16 md:py-24;
+  }
+
+  .welcome-glow {
+    animation: welcomeGlow 2.5s ease-in-out infinite;
+  }
+
+  .petal {
+    position: absolute;
+    pointer-events: none;
+    animation: petalFall linear infinite;
+  }
+
+  .countdown-box {
+    @apply flex flex-col items-center justify-center rounded-2xl p-4;
+    background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(253,248,240,0.8));
+    box-shadow:
+      0 8px 32px rgba(212, 160, 23, 0.15),
+      inset 0 1px 0 rgba(255,255,255,0.8);
+    border: 1px solid rgba(212, 160, 23, 0.2);
+  }
+
+  .event-card {
+    @apply relative pl-8 pb-12 last:pb-0;
+  }
+
+  .event-card::before {
+    content: '';
+    @apply absolute left-3 top-0 bottom-0 w-px;
+    background: linear-gradient(to bottom, #D4A017, rgba(212, 160, 23, 0.1));
+  }
+
+  .event-card::after {
+    content: '';
+    @apply absolute left-1.5 top-1.5 w-3 h-3 rounded-full;
+    background: linear-gradient(135deg, #D4A017, #B8860B);
+    box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.2);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FDF8F0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(#D4A017, #B8860B);
+    border-radius: 2px;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid #D4A017;
+    outline-offset: 2px;
+  }
+
+  /* Input styles */
+  .wedding-input {
+    @apply w-full px-4 py-3 rounded-xl border text-[#3D2B1F] font-body text-base;
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(212, 160, 23, 0.3);
+    transition: all 0.2s ease;
+  }
+  .wedding-input:focus {
+    outline: none;
+    border-color: #D4A017;
+    box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .wedding-btn {
+    @apply px-6 py-3 rounded-full font-serif-display font-semibold tracking-widest text-sm uppercase;
+    background: linear-gradient(135deg, #C6973F, #D4A017, #B8860B);
+    color: white;
+    box-shadow: 0 4px 15px rgba(212, 160, 23, 0.4);
+    transition: all 0.3s ease;
+  }
+  .wedding-btn:hover {
+    box-shadow: 0 8px 25px rgba(212, 160, 23, 0.5);
+    transform: translateY(-1px);
+  }
+  .wedding-btn:active {
+    transform: translateY(0);
+  }
+}
+
+@keyframes welcomeGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 30px rgba(212, 160, 23, 0.5),
+      0 0 60px rgba(212, 160, 23, 0.2),
+      inset 0 0 30px rgba(212, 160, 23, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 0 50px rgba(212, 160, 23, 0.8),
+      0 0 100px rgba(212, 160, 23, 0.4),
+      inset 0 0 40px rgba(212, 160, 23, 0.1);
+  }
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(-10px) rotate(0deg) translateX(0px);
+    opacity: 0;
+  }
+  5% { opacity: 0.8; }
+  95% { opacity: 0.6; }
+  100% {
+    transform: translateY(110vh) rotate(720deg) translateX(60px);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
